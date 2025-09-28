@@ -10,6 +10,13 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
+      - name: Ruff (lint + fix)
+        run: ruff check . --fix
+
+      - name: Black (format check)
+        run: black --check .
+
+
       - name: Checkout
         uses: actions/checkout@v4
 
