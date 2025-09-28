@@ -1,0 +1,14 @@
+artifact_uri: file:///D:/MLop%20pro/test_ml_flow/mlops_pipeline/script/mlruns/995895570044728077/8d218cdd97f847b7aa562ae18a3521c3/artifacts
+end_time: 1759053493730
+entry_point_name: ''
+experiment_id: '995895570044728077'
+lifecycle_stage: active
+run_id: 8d218cdd97f847b7aa562ae18a3521c3
+run_name: selective-mink-366
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1759053493657
+status: 4
+tags: []
+user_id: WINDOWS

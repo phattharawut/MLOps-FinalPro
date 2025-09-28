@@ -1,0 +1,14 @@
+artifact_uri: file:///D:/MLop%20pro/test_ml_flow/mlruns/842501203948908917/948fde5fdc414b4eb0ec6f3b977ba9dd/artifacts
+end_time: 1759053508678
+entry_point_name: ''
+experiment_id: '842501203948908917'
+lifecycle_stage: active
+run_id: 948fde5fdc414b4eb0ec6f3b977ba9dd
+run_name: angry-kite-822
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1759053508608
+status: 4
+tags: []
+user_id: WINDOWS

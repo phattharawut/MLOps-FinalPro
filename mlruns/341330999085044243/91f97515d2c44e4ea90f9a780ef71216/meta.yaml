@@ -1,0 +1,14 @@
+artifact_uri: file:///D:/MLop%20pro/test_ml_flow/mlruns/341330999085044243/91f97515d2c44e4ea90f9a780ef71216/artifacts
+end_time: 1759053541692
+entry_point_name: ''
+experiment_id: '341330999085044243'
+lifecycle_stage: active
+run_id: 91f97515d2c44e4ea90f9a780ef71216
+run_name: hilarious-duck-404
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1759053539308
+status: 3
+tags: []
+user_id: WINDOWS

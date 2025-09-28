@@ -1,0 +1,14 @@
+artifact_uri: file:///D:/MLop%20pro/test_ml_flow/mlruns/168412934200118998/017a4a578d5c4d9ebe032eb4116eb50b/artifacts
+end_time: 1759053923858
+entry_point_name: ''
+experiment_id: '168412934200118998'
+lifecycle_stage: active
+run_id: 017a4a578d5c4d9ebe032eb4116eb50b
+run_name: gridsearch_models_from_91f97515d2c44e4ea90f9a780ef71216
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1759053558225
+status: 3
+tags: []
+user_id: WINDOWS

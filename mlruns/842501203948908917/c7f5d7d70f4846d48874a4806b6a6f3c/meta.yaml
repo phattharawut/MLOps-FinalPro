@@ -1,0 +1,14 @@
+artifact_uri: file:///D:/MLop%20pro/test_ml_flow/mlruns/842501203948908917/c7f5d7d70f4846d48874a4806b6a6f3c/artifacts
+end_time: 1759053532060
+entry_point_name: ''
+experiment_id: '842501203948908917'
+lifecycle_stage: active
+run_id: c7f5d7d70f4846d48874a4806b6a6f3c
+run_name: charming-croc-286
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1759053529075
+status: 3
+tags: []
+user_id: WINDOWS

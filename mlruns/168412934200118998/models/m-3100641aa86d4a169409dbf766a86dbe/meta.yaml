@@ -1,0 +1,10 @@
+artifact_location: file:///D:/MLop%20pro/test_ml_flow/mlruns/168412934200118998/models/m-3100641aa86d4a169409dbf766a86dbe/artifacts
+creation_timestamp: 1759053913006
+experiment_id: '168412934200118998'
+last_updated_timestamp: 1759053923762
+model_id: m-3100641aa86d4a169409dbf766a86dbe
+model_type: null
+name: drybeans_model
+source_run_id: 017a4a578d5c4d9ebe032eb4116eb50b
+status: 2
+status_message: null
