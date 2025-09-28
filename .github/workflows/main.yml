@@ -100,6 +100,8 @@ jobs:
           pip install mlflow pandas numpy scikit-learn joblib matplotlib openpyxl
 
       - name: Run Data Validation
+        env:
+          MLFLOW_BACKEND_STORE_URI: sqlite:///mlflow.db
         run: python mlops_pipeline/script/01_data_validation.py
 
       - name: Run Data Preprocessing
