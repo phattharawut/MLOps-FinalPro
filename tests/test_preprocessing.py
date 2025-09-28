@@ -2,11 +2,32 @@ import os
 import sys
 import types
 import pandas as pd
-from importlib.machinery import SourceFileLoader
+import importlib.util
+from pathlib import Path
+
+CANDIDATE_PATHS = [
+    "02_data_preprocessing.py",
+    "mlops_pipeline/02_data_preprocessing.py",
+    "script/02_data_preprocessing.py",
+]
+
+def resolve_preprocess_path() -> str:
+    # Prefer GitHub workspace when present; otherwise use repo root heuristic.
+    repo_root = os.getenv("GITHUB_WORKSPACE", os.getcwd())
+    for rel in CANDIDATE_PATHS:
+        p = Path(repo_root) / rel
+        if p.exists():
+            return str(p.resolve())
+    # fallback: search recursively (last resort)
+    for p in Path(repo_root).rglob("02_data_preprocessing.py"):
+        return str(p.resolve())
+    raise FileNotFoundError("Cannot locate 02_data_preprocessing.py in repo. Checked: " + ", ".join(CANDIDATE_PATHS))
 
 def load_module_func(py_path: str, func_name: str):
-    mod_name = os.path.splitext(os.path.basename(py_path))[0].replace("-", "_")
-    module = SourceFileLoader(mod_name, py_path).load_module()
+    spec = importlib.util.spec_from_file_location("preprocess_module", py_path)
+    module = importlib.util.module_from_spec(spec)
+    assert spec and spec.loader, "Invalid module spec for %s" % py_path
+    spec.loader.exec_module(module)
     fn = getattr(module, func_name)
     return fn
 
@@ -20,12 +41,14 @@ def test_preprocess_creates_artifacts(tmp_path):
     xlsx_path = tmp_path / "drybeans_dummy.xlsx"
     df.to_excel(xlsx_path, index=False)
 
-    # Change working directory so outputs land under tmp_path
+    # Resolve path to the preprocessing script in the repo
+    preproc_path = resolve_preprocess_path()
+    preprocess_data = load_module_func(preproc_path, "preprocess_data")
+
+    # Act within tmp_path so outputs don't pollute repo
     cwd = os.getcwd()
     os.chdir(tmp_path)
     try:
-        preprocess_data = load_module_func(os.path.abspath("02_data_preprocessing.py"), "preprocess_data")
-        # Act
         preprocess_data(
             data_path=str(xlsx_path),
             sheet_name=0,
