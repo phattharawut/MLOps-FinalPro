@@ -75,7 +75,7 @@ def validate_data(
     with mlflow.start_run() as run:
         run_id = run.info.run_id
         mlflow.set_tag("ml.step", "data_validation")
-        mlflow.log_param("data_path", os.path.abspath(data_path))
+        mlflow.log_param("data_path", data_path)
         if sheet_name is not None:
             mlflow.log_param("sheet_name", sheet_name)
 
