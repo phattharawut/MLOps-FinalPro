@@ -1,23 +1,24 @@
+import json
 import os
 import sys
-import json
-import numpy as np
-import pandas as pd
-from typing import Dict, Any
+from typing import Any, Dict
 
-import mlflow
-import mlflow.sklearn
-from mlflow.artifacts import download_artifacts
-from mlflow.models import infer_signature
-
-from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, classification_report, confusion_matrix
-from sklearn.model_selection import GridSearchCV
-from sklearn.svm import SVC
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
-from sklearn.neighbors import KNeighborsClassifier
 import joblib
 import matplotlib.pyplot as plt
+import mlflow
+import mlflow.sklearn
+import numpy as np
+import pandas as pd
+from mlflow.artifacts import download_artifacts
+from mlflow.models import infer_signature
+from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import (accuracy_score, classification_report,
+                             confusion_matrix, f1_score, precision_score,
+                             recall_score)
+from sklearn.model_selection import GridSearchCV
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
 
 
 MODELS_AND_GRIDS: Dict[str, Any] = {
@@ -66,7 +67,7 @@ def _plot_and_log_confusion(cm: np.ndarray, classes: list, artifact_dir="eval_ar
 def train_evaluate_register(preprocessing_run_id: str, model_registry_name: str = "DryBeans-Classifier"):
     mlflow.set_experiment(DEF_EXPERIMENT)
 
-    with mlflow.start_run(run_name=f"gridsearch_models_from_{preprocessing_run_id}") as run:
+    with mlflow.start_run(run_name=f"gridsearch_models_from_{preprocessing_run_id}"):
         mlflow.set_tag("ml.step", "model_training_evaluation")
         mlflow.log_param("preprocessing_run_id", preprocessing_run_id)
 

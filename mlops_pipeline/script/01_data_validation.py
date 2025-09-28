@@ -1,13 +1,13 @@
 # =============================================
 # 01_data_validation.py  — Dry Beans
 # =============================================
-import os
 import json
-import io
+import os
+import mlflow
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import IsolationForest
-import mlflow
+
 
 
 def _basic_stats(df: pd.DataFrame, label_col: str):
