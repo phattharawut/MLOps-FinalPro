@@ -47,7 +47,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      MLFLOW_TRACKING_URI: ./mlruns
+      MLFLOW_TRACKING_URI: sqlite:///mlflow.db
+      MLFLOW_DEFAULT_ARTIFACT_ROOT: ./artifacts
       MPLBACKEND: Agg
     steps:
       - name: Checkout
@@ -83,7 +84,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: [lint, test]
     env:
-      MLFLOW_TRACKING_URI: ./mlruns
+      MLFLOW_TRACKING_URI: sqlite:///mlflow.db
+      MLFLOW_DEFAULT_ARTIFACT_ROOT: ./artifacts
       MPLBACKEND: Agg
     steps:
       - name: Checkout
@@ -100,8 +102,6 @@ jobs:
           pip install mlflow pandas numpy scikit-learn joblib matplotlib openpyxl
 
       - name: Run Data Validation
-        env:
-          MLFLOW_BACKEND_STORE_URI: sqlite:///mlflow.db
         run: python mlops_pipeline/script/01_data_validation.py
 
       - name: Run Data Preprocessing
